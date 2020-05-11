@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootanchor" prefHeight="105.0" prefWidth="463.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="dateCell" layoutX="397.0" layoutY="88.0" style="-fx-background-color: #7128f8;" text="12-02-20" textFill="WHITE" />
+      <AnchorPane layoutX="109.0" layoutY="36.0" prefHeight="38.0" prefWidth="192.0" style="-fx-background-color: #7128f8;">
+         <children>
+            <Label fx:id="userFirstName" layoutX="6.0" layoutY="4.0" prefHeight="28.0" prefWidth="71.0" text="FirstName" textFill="WHITE" />
+            <Label fx:id="userLastName" layoutX="96.0" layoutY="5.0" prefHeight="28.0" prefWidth="71.0" text="LastName" textFill="WHITE" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <JFXButton fx:id="acceptButton" layoutX="324.0" layoutY="11.0" style="-fx-background-color: #7128f8;" text="Accept" textFill="WHITE" />
+      <JFXButton fx:id="declineButton" layoutX="395.0" layoutY="11.0" style="-fx-background-color: #7128f8;" text="Decline" textFill="WHITE" />
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>
