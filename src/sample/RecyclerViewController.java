@@ -51,7 +51,7 @@ public class RecyclerViewController extends JFXListCell<Student> {
                     e.printStackTrace();
                 }
             }
-            userFirstName.setText(student.getFirstName());
+            userFirstName.setText(student.getUserName());
             userLastName.setText(student.getLastName());
             dateCell.setText(student.getDate());
           declineButton.setOnAction(actionEvent -> {
@@ -59,6 +59,7 @@ public class RecyclerViewController extends JFXListCell<Student> {
           });
            acceptButton.setOnAction(actionEvent -> {
                 getListView().getItems().remove(getItem());
+
             });
 
             setText(null);

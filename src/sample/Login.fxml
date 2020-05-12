@@ -20,8 +20,8 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXCheckBox layoutX="316.0" layoutY="174.0" text="Student" />
-      <JFXCheckBox layoutX="540.0" layoutY="174.0" text="Admin" />
+      <JFXCheckBox fx:id="studentCheck" layoutX="316.0" layoutY="174.0" text="Student" />
+      <JFXCheckBox fx:id="adminCheck" layoutX="540.0" layoutY="174.0" text="Admin" />
       <TextField fx:id="IDtext" layoutX="271.0" layoutY="314.0" prefHeight="25.0" prefWidth="358.0" />
       <TextField fx:id="PasswordText" layoutX="270.0" layoutY="375.0" prefHeight="25.0" prefWidth="358.0" />
       <Label layoutX="210.0" layoutY="318.0" text="Student ID" />

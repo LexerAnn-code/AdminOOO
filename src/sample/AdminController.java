@@ -44,10 +44,9 @@ public class AdminController implements Initializable, DBConnection {
 
             while (userRes.next()) {
                 Student student = new Student();
-                student.setFirstName(userRes.getString("student_firstname"));
-                student.setLastName(userRes.getString("student_lastname"));
+                student.setUserName(userRes.getString("student_username"));
                 student.setDate(userRes.getString("date_of_register"));
-                student.setId(userRes.getInt("id"));
+                student.setId(userRes.getInt("studentid"));
 
 
                 list.addAll(student);

@@ -2,11 +2,6 @@ package sample;
 
 public class Student {
     int id;
-String firstName;
-String lastName;
-String userName;
-String password;
-String date;
 
     public int getId() {
         return id;
@@ -16,12 +11,20 @@ String date;
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
+    String userName;
+String password;
+String date;
+String lastName;
+
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Student() {
     }
 
     public String getUserName() {
@@ -40,28 +43,11 @@ String date;
         this.password = password;
     }
 
-    public Student(String firstName, String lastName) {
-
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public String getDate() {
+        return date;
     }
 
-    public Student() {
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setDate(String date) {
+        this.date = date;
     }
 }

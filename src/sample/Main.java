@@ -18,9 +18,12 @@ public class Main extends Application {
         DBConnection dbConnection=new AdminController();
         DBConnection dbConnectionLogin=new LoginController();
 
+        DBConnection dbConnectionRegisterProfile=new RegisterController();
+
         MySQLConnection mySQLConnection=new MySQLConnection();
 
         mySQLConnection.connectSQL(dbConnection);
+        mySQLConnection.connectSQL(dbConnectionRegisterProfile);
         mySQLConnection.connectSQL(dbConnectionLogin);
     }
 
