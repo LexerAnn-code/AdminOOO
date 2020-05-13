@@ -10,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
-public class RecyclerViewController extends JFXListCell<Student> {
+public class RecyclerViewController extends JFXListCell<Admission> {
 
     FXMLLoader fxmlLoader;
     @FXML
@@ -35,10 +35,13 @@ public class RecyclerViewController extends JFXListCell<Student> {
     @FXML
     private JFXButton declineButton;
 
+    @FXML
+    private JFXButton Doc;
+
     @Override
-    protected void updateItem(Student student, boolean empty) {
-        super.updateItem(student, empty);
-        if (empty || student == null) {
+    protected void updateItem(Admission admission, boolean empty) {
+        super.updateItem(admission, empty);
+        if (empty || admission == null) {
             setText(null);
             setGraphic(null);
         } else {
@@ -51,11 +54,16 @@ public class RecyclerViewController extends JFXListCell<Student> {
                     e.printStackTrace();
                 }
             }
-            userFirstName.setText(student.getUserName());
-            userLastName.setText(student.getLastName());
-            dateCell.setText(student.getDate());
+            userFirstName.setText(admission.getFirstname());
+            userLastName.setText(admission.getLastname());
+
           declineButton.setOnAction(actionEvent -> {
               getListView().getItems().remove(getItem());
+
+              Extension extension=new Extension();
+              extension.deleteTask(admission);
+              extension.deleteSelect(admission);
+              System.out.println("Totally Passed" + admission.getAdmissionID());
           });
            acceptButton.setOnAction(actionEvent -> {
                 getListView().getItems().remove(getItem());

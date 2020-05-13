@@ -1,6 +1,16 @@
 package sample;
 
 public class Admission {
+    int admissionID;
+
+    public int getAdmissionID() {
+        return admissionID;
+    }
+
+    public void setAdmissionID(int admissionID) {
+        this.admissionID = admissionID;
+    }
+
     String preschool;
     String schooladdress;
     String firstname;

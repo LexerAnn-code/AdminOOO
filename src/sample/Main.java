@@ -17,12 +17,14 @@ public class Main extends Application {
 
         DBConnection dbConnection=new AdminController();
         DBConnection dbConnectionLogin=new LoginController();
+        DBConnection dbConnectionExtension=new Extension();
 
         DBConnection dbConnectionRegisterProfile=new RegisterController();
 
         MySQLConnection mySQLConnection=new MySQLConnection();
 
         mySQLConnection.connectSQL(dbConnection);
+        mySQLConnection.connectSQL(dbConnectionExtension);
         mySQLConnection.connectSQL(dbConnectionRegisterProfile);
         mySQLConnection.connectSQL(dbConnectionLogin);
     }

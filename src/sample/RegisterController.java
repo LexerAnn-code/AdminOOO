@@ -7,7 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -64,14 +69,18 @@ public class RegisterController implements Initializable, DBConnection {
     @FXML
     private TextField registerSchoolAddress;
 
+    @FXML
+    private ListView  registerListView;
+
 
 
     static private PreparedStatement preparedStatement;
     static private Connection connection;
-
+    byte[] pdfData;
+    FileInputStream fis;
     private int userIDPass;
+    public static String filename;
     public static int id;
-
 
     public void setUserIDPass(int userIDPass) {
         this.userIDPass = userIDPass;
@@ -93,7 +102,7 @@ public class RegisterController implements Initializable, DBConnection {
             String address = RegisterAddress.getText();
             String middleName = RegisterMiddleName.getText();
             String firstname = RegisterFirstName.getText();
-            String courses =   course.getText();
+            String courses = course.getText();
             String levelText = level.getText();
             String previousSchool = registerPrevSchool.getText();
             String schoolAddress = registerSchoolAddress.getText();
@@ -118,8 +127,25 @@ public class RegisterController implements Initializable, DBConnection {
                 e.printStackTrace();
             }
         });
+        schoolDocButton.setOnAction(event -> {
+            FileChooser fc= new FileChooser();
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF Files","*.pdf"));
+            File selectedfile=fc.showOpenDialog(null);
+
+
+            if (selectedfile!=null){
+                filename=selectedfile.getAbsolutePath();
+                registerListView.getItems().add(selectedfile.getName());
+
+            }
+            else{
+                System.out.println("File is not valid");
+            }
+
+        });
 
     }
+
 
     @Override
     public void connect() throws SQLException {
@@ -128,8 +154,18 @@ public class RegisterController implements Initializable, DBConnection {
     }
 
     private void writeToAdmissionDB(RegisterAdmission registerAdmission) throws SQLException {
+        String insert = "INSERT INTO admissionlist(studentid,first_name,last_name,middle_name,father_name,mother_name,contact_number,address,course,level,previous_school,school_address,document)" + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        int len=0;
+        File file=new File(filename);
 
-        String insert = "INSERT INTO admissionlist(studentid,first_name,last_name,middle_name,father_name,mother_name,contact_number,address,course,level,previous_school,school_address)" + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            fis=new FileInputStream(file);
+            len=(int) file.length();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         preparedStatement = (PreparedStatement) connection.prepareStatement(insert);
         preparedStatement.setInt(1, id);
         preparedStatement.setString(2, registerAdmission.getFirstName());
@@ -143,7 +179,7 @@ public class RegisterController implements Initializable, DBConnection {
         preparedStatement.setString(10, registerAdmission.getLevel());
         preparedStatement.setString(11, registerAdmission.getPreviousSchool());
         preparedStatement.setString(12, registerAdmission.getSchoolAddress());
-
+        preparedStatement.setBinaryStream(13,fis);
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }

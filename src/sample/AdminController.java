@@ -32,8 +32,8 @@ public class AdminController implements Initializable, DBConnection {
     @FXML
     private Label approveNav;
     @FXML
-    private JFXListView<Student> listView;
-    ObservableList<Student> list;
+    private JFXListView<Admission> listView;
+    ObservableList<Admission> list;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,13 +43,13 @@ public class AdminController implements Initializable, DBConnection {
             ResultSet userRes = ReadToDB();
 
             while (userRes.next()) {
-                Student student = new Student();
-                student.setUserName(userRes.getString("student_username"));
-                student.setDate(userRes.getString("date_of_register"));
-                student.setId(userRes.getInt("studentid"));
+                Admission admission=new Admission();
+                admission.setFirstname(userRes.getString("first_name"));
+                admission.setLastname(userRes.getString("last_name"));
+                admission.setAdmissionID(userRes.getInt("admissionid"));
 
 
-                list.addAll(student);
+                list.addAll(admission);
                 counter++;
             }
             total_applicant.setText(String.valueOf(counter));
@@ -102,7 +102,7 @@ public class AdminController implements Initializable, DBConnection {
 
     private ResultSet ReadToDB() throws SQLException {
         ResultSet resultSet = null;
-        String insert = "SELECT * FROM student";
+        String insert = "SELECT * FROM admissionlist";
         preparedStatement = (PreparedStatement) connection.prepareStatement(insert);
         resultSet = preparedStatement.executeQuery();
         System.out.println("Data" + resultSet);
@@ -111,7 +111,7 @@ public class AdminController implements Initializable, DBConnection {
 
     private static ResultSet DeleteToDB() throws SQLException {
         ResultSet resultSet = null;
-        String insert = "DELETE FROM student WHERE id";
+        String insert = "DELETE FROM admission WHERE id";
         preparedStatement = (PreparedStatement) connection.prepareStatement(insert);
         resultSet = preparedStatement.executeQuery();
         System.out.println("Data" + resultSet);

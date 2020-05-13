@@ -19,6 +19,7 @@
       </AnchorPane>
       <JFXButton fx:id="acceptButton" layoutX="324.0" layoutY="11.0" style="-fx-background-color: #7128f8;" text="Accept" textFill="WHITE" />
       <JFXButton fx:id="declineButton" layoutX="395.0" layoutY="11.0" style="-fx-background-color: #7128f8;" text="Decline" textFill="WHITE" />
+      <JFXButton fx:id="Doc" layoutX="24.0" layoutY="24.0" prefHeight="38.0" prefWidth="53.0" style="-fx-background-color: #7128f8;" text="Doc" textFill="WHITE" />
    </children>
    <effect>
       <DropShadow />
