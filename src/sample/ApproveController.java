@@ -100,7 +100,7 @@ acceptListView.setOnMouseClicked(mouseEvent -> {
     private ResultSet ReadToDBs() throws SQLException {
         ResultSet resultSet = null;
         String insert = "SELECT * FROM admissionlist WHERE status=?";
-        preparedStatement = (PreparedStatement) connection.prepareStatement(insert);
+        preparedStatement = connection.prepareStatement(insert);
         preparedStatement.setString(1,"Accepted");
         resultSet = preparedStatement.executeQuery();
         System.out.println("Data" + resultSet);

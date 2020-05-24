@@ -44,11 +44,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <ImageView fitHeight="27.0" fitWidth="26.0" layoutX="8.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@asserts/icons8-clipboard-approve-64%20(1).png" />
-               </image>
-            </ImageView>
+
             <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="9.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@asserts/icons8-delete-500.png" />
