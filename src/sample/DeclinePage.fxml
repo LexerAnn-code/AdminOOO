@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXListView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -65,7 +66,17 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Label layoutX="141.0" layoutY="14.0" prefHeight="39.0" prefWidth="143.0" text="Decline List">
+      <Label layoutX="141.0" layoutY="14.0" prefHeight="39.0" prefWidth="143.0" text="Decline List :">
+         <font>
+            <Font name="Malgun Gothic Bold" size="23.0" />
+         </font>
+      </Label>
+      <JFXListView fx:id="deniedListView" layoutX="213.0" layoutY="88.0" prefHeight="365.0" prefWidth="547.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </JFXListView>
+      <Label fx:id="declineCount" layoutX="284.0" layoutY="14.0" prefHeight="39.0" prefWidth="143.0" text="5">
          <font>
             <Font name="Malgun Gothic Bold" size="23.0" />
          </font>

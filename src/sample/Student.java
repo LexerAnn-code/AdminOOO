@@ -11,10 +11,11 @@ public class Student {
         this.id = id;
     }
 
-    String userName;
-String password;
-String date;
+  private  String userName;
+private String password;
+ String date;
 String lastName;
+
 
     public String getLastName() {
         return lastName;

@@ -8,11 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import javax.swing.text.html.ImageView;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class RecyclerViewController extends JFXListCell<Admission> {
 
-    FXMLLoader fxmlLoader;
+   private FXMLLoader fxmlLoader;
     @FXML
     private ImageView pdfDrive;
 
@@ -61,12 +63,23 @@ public class RecyclerViewController extends JFXListCell<Admission> {
               getListView().getItems().remove(getItem());
 
               Extension extension=new Extension();
-              extension.deleteTask(admission);
-              extension.deleteSelect(admission);
+              extension.DenySelect(admission);
+
               System.out.println("Totally Passed" + admission.getAdmissionID());
+          });
+          Doc.setOnAction(actionEvent -> {
+              Extension extension=new Extension();
+              //
+              try {
+                  extension.DocFile(admission);
+              } catch (SQLException | FileNotFoundException e) {
+                  e.printStackTrace();
+              }
           });
            acceptButton.setOnAction(actionEvent -> {
                 getListView().getItems().remove(getItem());
+               Extension extension=new Extension();
+               extension.AcceptSelect(admission);
 
             });
 

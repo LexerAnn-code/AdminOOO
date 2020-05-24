@@ -16,17 +16,25 @@ public class Main extends Application {
         primaryStage.show();
 
         DBConnection dbConnection=new AdminController();
+        DBConnection dbConnectionDecline=new DeclineController();
         DBConnection dbConnectionLogin=new LoginController();
         DBConnection dbConnectionExtension=new Extension();
+        DBConnection dbConnectionAfterLogin=new AfterLoginController();
+        DBConnection dbConnectionAccept=new ApproveController();
+        DBConnection dbConnectionAcceptDetails=new AcceptDetailsController();
 
         DBConnection dbConnectionRegisterProfile=new RegisterController();
 
         MySQLConnection mySQLConnection=new MySQLConnection();
 
         mySQLConnection.connectSQL(dbConnection);
+        mySQLConnection.connectSQL(dbConnectionAcceptDetails);
+        mySQLConnection.connectSQL(dbConnectionAfterLogin);
+        mySQLConnection.connectSQL(dbConnectionDecline);
         mySQLConnection.connectSQL(dbConnectionExtension);
         mySQLConnection.connectSQL(dbConnectionRegisterProfile);
         mySQLConnection.connectSQL(dbConnectionLogin);
+        mySQLConnection.connectSQL(dbConnectionAccept);
     }
 
 

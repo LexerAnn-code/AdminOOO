@@ -117,7 +117,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXListView fx:id="listView" layoutX="232.0" layoutY="125.0" prefHeight="361.0" prefWidth="512.0">
+      <JFXListView fx:id="listView" focusTraversable="false" layoutX="232.0" layoutY="125.0" prefHeight="361.0" prefWidth="512.0" style="-fx-background-color: #ffffff;">
          <effect>
             <DropShadow />
          </effect>

@@ -21,7 +21,7 @@ public class LoginController implements Initializable, DBConnection {
     Parent root;
     static private PreparedStatement preparedStatement;
     static private Connection connection;
-    int userID;
+    static int userID;
     String fname, lastname;
 
     @FXML
@@ -238,7 +238,7 @@ public class LoginController implements Initializable, DBConnection {
         if (counter == 1) {
             System.out.println("Data exists");
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/sample/sample.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/sample/afterlogin.fxml"));
 
             try {
                 fxmlLoader.setRoot(fxmlLoader.getRoot());
@@ -246,10 +246,9 @@ public class LoginController implements Initializable, DBConnection {
             } catch (IOException e) {
 
             }
-
             Parent root = fxmlLoader.getRoot();
             Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(root,850,500));
             stage.show();
 
         } else {

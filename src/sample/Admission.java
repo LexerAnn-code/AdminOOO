@@ -14,6 +14,51 @@ public class Admission {
     String preschool;
     String schooladdress;
     String firstname;
+    String admission;
+    String level;
+    String course;
+    String hall;
+String docFile;
+
+    public String getDocFile() {
+        return docFile;
+    }
+
+    public void setDocFile(String docFile) {
+        this.docFile = docFile;
+    }
+
+    public String getHall() {
+        return hall;
+    }
+
+    public void setHall(String hall) {
+        this.hall = hall;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getAdmission() {
+        return admission;
+    }
+
+    public void setAdmission(String admission) {
+        this.admission = admission;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
     public Admission(String preschool, String schooladdress, String firstname, String lastname) {
         this.preschool = preschool;

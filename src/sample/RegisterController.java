@@ -77,7 +77,7 @@ public class RegisterController implements Initializable, DBConnection {
     static private PreparedStatement preparedStatement;
     static private Connection connection;
     byte[] pdfData;
-    FileInputStream fis;
+
     private int userIDPass;
     public static String filename;
     public static int id;
@@ -155,32 +155,33 @@ public class RegisterController implements Initializable, DBConnection {
 
     private void writeToAdmissionDB(RegisterAdmission registerAdmission) throws SQLException {
         String insert = "INSERT INTO admissionlist(studentid,first_name,last_name,middle_name,father_name,mother_name,contact_number,address,course,level,previous_school,school_address,document)" + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        int len=0;
-        File file=new File(filename);
+
 
         try {
-            fis=new FileInputStream(file);
-            len=(int) file.length();
+            File file=new File(filename);
+            FileInputStream fis=new FileInputStream(file);
+            preparedStatement = (PreparedStatement) connection.prepareStatement(insert);
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, registerAdmission.getFirstName());
+            preparedStatement.setString(3, registerAdmission.getLastName());
+            preparedStatement.setString(4, registerAdmission.getMiddleName());
+            preparedStatement.setString(5, registerAdmission.getFatherName());
+            preparedStatement.setString(6, registerAdmission.getMotherName());
+            preparedStatement.setString(7, registerAdmission.getContact());
+            preparedStatement.setString(8, registerAdmission.getAddress());
+            preparedStatement.setString(9, registerAdmission.getCourse());
+            preparedStatement.setString(10, registerAdmission.getLevel());
+            preparedStatement.setString(11, registerAdmission.getPreviousSchool());
+            preparedStatement.setString(12, registerAdmission.getSchoolAddress());
+            preparedStatement.setBinaryStream(13,fis);
+
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        preparedStatement = (PreparedStatement) connection.prepareStatement(insert);
-        preparedStatement.setInt(1, id);
-        preparedStatement.setString(2, registerAdmission.getFirstName());
-        preparedStatement.setString(3, registerAdmission.getLastName());
-        preparedStatement.setString(4, registerAdmission.getMiddleName());
-        preparedStatement.setString(5, registerAdmission.getFatherName());
-        preparedStatement.setString(6, registerAdmission.getMotherName());
-        preparedStatement.setString(7, registerAdmission.getContact());
-        preparedStatement.setString(8, registerAdmission.getAddress());
-        preparedStatement.setString(9, registerAdmission.getCourse());
-        preparedStatement.setString(10, registerAdmission.getLevel());
-        preparedStatement.setString(11, registerAdmission.getPreviousSchool());
-        preparedStatement.setString(12, registerAdmission.getSchoolAddress());
-        preparedStatement.setBinaryStream(13,fis);
-        preparedStatement.executeUpdate();
-        preparedStatement.close();
+
     }
 }

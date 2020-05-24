@@ -62,6 +62,7 @@ public class AdminController implements Initializable, DBConnection {
         }
         approveNav.setOnMouseClicked(mouseEvent -> {
             moveToApprove();
+            System.out.println("Approve Nav");
         });
         declineNav.setOnMouseClicked(mouseEvent -> {
             moveToDecline();
@@ -83,7 +84,9 @@ public class AdminController implements Initializable, DBConnection {
     }
 
     public void moveToDecline() {
+        System.out.println("Data exists");
         try {
+
             root = FXMLLoader.load(getClass().getResource("/sample/DeclinePage.fxml"));
             scene = new Scene(root, 850, 500);
             stage = (Stage) approveNav.getScene().getWindow();
@@ -92,6 +95,7 @@ public class AdminController implements Initializable, DBConnection {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
@@ -102,8 +106,9 @@ public class AdminController implements Initializable, DBConnection {
 
     private ResultSet ReadToDB() throws SQLException {
         ResultSet resultSet = null;
-        String insert = "SELECT * FROM admissionlist";
+        String insert = "SELECT * FROM admissionlist WHERE status=?";
         preparedStatement = (PreparedStatement) connection.prepareStatement(insert);
+        preparedStatement.setString(1,"Progress");
         resultSet = preparedStatement.executeQuery();
         System.out.println("Data" + resultSet);
         return resultSet;
