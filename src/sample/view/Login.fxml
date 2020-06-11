@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.LoginController">
+   <children>
+      <AnchorPane prefHeight="116.0" prefWidth="1500.0" style="-fx-background-color: #0033E6;">
+         <children>
+            <Label alignment="CENTER" layoutX="314.0" layoutY="59.0" prefHeight="47.0" prefWidth="837.0" text="WELCOME TO THE UMS LOGIN PAGE" textFill="#fffafa">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="54.0" fitWidth="65.0" layoutX="706.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/adminlogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <JFXCheckBox fx:id="studentCheck" layoutX="480.0" layoutY="226.0" text="STUDENT" />
+      <JFXCheckBox fx:id="adminCheck" layoutX="689.0" layoutY="226.0" text="ADMIN" />
+      <TextField fx:id="IDtext" layoutX="462.0" layoutY="311.0" prefHeight="47.0" prefWidth="358.0" />
+      <Label layoutX="379.0" layoutY="326.0" text="USERNAME:" />
+      <Label layoutX="378.0" layoutY="441.0" text="PASSWORD:" />
+      <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="583.0" layoutY="550.0" prefHeight="47.0" prefWidth="103.0" style="-fx-background-color: #c5a600;" text="LOGIN" textFill="WHITE" />
+      <Label fx:id="toastError" alignment="TOP_LEFT" layoutX="265.0" layoutY="129.0" prefHeight="35.0" prefWidth="470.0" text="The Username or the Password is incorrect. PLEASE TRY AGAIN" textFill="#f50b0b" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Hyperlink fx:id="loginRegisterButton" layoutX="669.0" layoutY="514.0" text="Click here">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Hyperlink>
+      <Label layoutX="517.0" layoutY="518.0" prefHeight="17.0" prefWidth="169.0" text="Do not have an account?">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="PasswordText" layoutX="462.0" layoutY="426.0" prefHeight="47.0" prefWidth="358.0" />
+      <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="328.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/social-media.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="32.0" layoutX="328.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/closed.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="518.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/lockk.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="30.0" layoutX="657.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-admin-settings-male-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="21.0" fitWidth="28.0" layoutX="451.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-student-registration-50.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="toastEmpty" layoutX="522.0" layoutY="164.0" prefHeight="28.0" prefWidth="174.0" text="Error!...Fields can't be empty" textFill="#d00c0c" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="toastboxes" layoutX="491.0" layoutY="178.0" prefHeight="25.0" prefWidth="309.0" text="Error! Can't check two boxes at once!" textFill="#ff1515" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

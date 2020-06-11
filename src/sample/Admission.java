@@ -20,6 +20,16 @@ public class Admission {
     String hall;
 String docFile;
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    String gender;
+
     public String getDocFile() {
         return docFile;
     }

@@ -1,7 +1,6 @@
-package sample;
+package sample.controller;
 
 import com.jfoenix.controls.JFXListView;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,14 +10,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.w3c.dom.ls.LSOutput;
+import sample.Admission;
+import sample.CurrentSelected;
+import sample.database.DBConnection;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class ApproveController  implements Initializable,DBConnection  {
+public class ApproveController  implements Initializable, DBConnection {
     static private PreparedStatement preparedStatement;
     static private Connection connection;
     Stage stage;
@@ -32,6 +33,11 @@ public class ApproveController  implements Initializable,DBConnection  {
     @FXML
     private Label declineNav;
 
+    @FXML
+    private Label approveNumber;
+
+    @FXML
+    private Label signout;
     @FXML
     private Label approveNav;
     @FXML
@@ -53,20 +59,21 @@ public class ApproveController  implements Initializable,DBConnection  {
                 admission.setFirstname(userRes.getString("first_name"));
                 admission.setLastname(userRes.getString("last_name"));
                 admission.setAdmissionID(userRes.getInt("admissionid"));
+                admission.setGender(userRes.getString("gender"));
                 acceptlist.addAll(admission);
                 counter++;
             }
             System.out.println("Count" + counter);
+            approveNumber.setText(String.valueOf(counter));
             acceptListView.setItems(acceptlist);
 acceptListView.setOnMouseClicked(mouseEvent -> {
 
     Admission name= acceptListView.getSelectionModel().getSelectedItem();
-    System.out.println(name.getFirstname()+ "New");
     AcceptDetailsController acceptDetailsController=new AcceptDetailsController();
-    acceptDetailsController.setFirstname(name.getFirstname(),name.getLastname());
+    acceptDetailsController.setName(name.getFirstname(),name.getLastname(),name.getGender());
     acceptDetailsController.setAdmissionID(name.getAdmissionID());
     FXMLLoader fxmlLoader = new FXMLLoader();
-    fxmlLoader.setLocation(getClass().getResource("/sample/acceptDetails.fxml"));
+    fxmlLoader.setLocation(getClass().getResource("/sample/view/acceptDetails.fxml"));
 
     try {
         fxmlLoader.setRoot(fxmlLoader.getRoot());
@@ -91,7 +98,31 @@ acceptListView.setOnMouseClicked(mouseEvent -> {
         declineNav.setOnMouseClicked(mouseEvent -> {
             moveToDecline();
         });
+
+        signout.setOnMouseClicked(mouseEvent -> {
+            moveToLogin();
+        });
     }
+
+    public void moveToLogin(){
+        signout.getScene().getWindow().hide();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/sample/view/Login.fxml"));
+
+        try {
+            fxmlLoader.setRoot(fxmlLoader.getRoot());
+            fxmlLoader.load();
+        } catch (IOException e) {
+
+        }
+
+        Parent root = fxmlLoader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+
     public void selectWell(CurrentSelected currentSelected){
         System.out.println("NAME"+ currentSelected.getFirst_name());
           firstnames=currentSelected.getFirst_name();
@@ -112,7 +143,7 @@ acceptListView.setOnMouseClicked(mouseEvent -> {
     public void moveToDecline(){
             try {
 
-                root = FXMLLoader.load(getClass().getResource("/sample/DeclinePage.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/sample/view/DeclinePage.fxml"));
                 scene = new Scene(root, 850, 500);
                 stage = (Stage) approveNav.getScene().getWindow();
                 stage.setScene(scene);
@@ -123,7 +154,7 @@ acceptListView.setOnMouseClicked(mouseEvent -> {
     }
     public void moveToOverView(){
             try {
-                root = FXMLLoader.load(getClass().getResource("/sample/AdminPage.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/sample/view/AdminPage.fxml"));
                 scene = new Scene(root, 850, 500);
                 stage = (Stage) approveNav.getScene().getWindow();
                 stage.setScene(scene);

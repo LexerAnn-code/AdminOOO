@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="900.0" prefWidth="1500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.RegisterController">
+   <children>
+      <BorderPane layoutX="1.0" prefHeight="121.0" prefWidth="1517.0" style="-fx-background-color: #0033E6;">
+         <center>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="1059.0" text="STUDENT ADMISSION FORM" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </center>
+      </BorderPane>
+      <Label layoutX="88.0" layoutY="178.0" text="Last Name:" />
+      <Label layoutX="86.0" layoutY="233.0" prefHeight="17.0" prefWidth="63.0" text="First Name:" />
+      <Label layoutX="86.0" layoutY="281.0" prefHeight="17.0" prefWidth="81.0" text="Middle Name:" />
+      <Label layoutX="86.0" layoutY="558.0" text="Address:" />
+      <Label layoutX="88.0" layoutY="488.0" prefHeight="28.0" prefWidth="89.0" text="Father's Name:" />
+      <Label layoutX="84.0" layoutY="440.0" text="Mother's Name:" />
+      <Label layoutX="83.0" layoutY="617.0" prefHeight="17.0" prefWidth="70.0" text="Contact No:" />
+      <Label layoutX="283.0" layoutY="145.0" prefHeight="17.0" prefWidth="133.0" text="Personal Information">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Line endX="357.0" layoutX="568.0" layoutY="152.0" startX="-164.0" />
+      <Line endX="272.0" layoutX="3.0" layoutY="153.0" startX="-0.9999984502792358" />
+      <Line endX="844.5" layoutX="665.0" layoutY="668.0" startX="-660.0" />
+      <JFXButton fx:id="RegisterSaveButton" layoutX="622.0" layoutY="678.0" style="-fx-background-color: #c5a600;" text="SAVE" textFill="WHITE" />
+      <JFXButton fx:id="RegisterCloseButton" layoutX="709.0" layoutY="679.0" style="-fx-background-color: #c5a600;" text="CLOSE" textFill="WHITE" />
+      <ImageView fitHeight="30.0" fitWidth="20.0" layoutX="441.0" layoutY="730.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/interface.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="552.0" layoutY="729.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/directional.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="33.0" fitWidth="29.0" layoutX="664.0" layoutY="726.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/interface(1).png" />
+         </image>
+      </ImageView>
+      <Label layoutX="84.0" layoutY="335.0" prefHeight="17.0" prefWidth="97.0" text="Date of Birth:" />
+      <ImageView fitHeight="18.0" fitWidth="24.0" layoutX="38.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/social.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="32.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-gender-64.png" />
+         </image>
+      </ImageView>
+      <Line endX="224.5" layoutX="712.0" layoutY="410.0" rotate="270.0" startX="-292.0" />
+      <TextField fx:id="RegisterLastName" layoutX="198.0" layoutY="173.0" prefHeight="33.0" prefWidth="353.0" />
+      <TextField fx:id="RegisterFirstName" layoutX="198.0" layoutY="225.0" prefHeight="33.0" prefWidth="353.0" />
+      <TextField fx:id="RegisterMiddleName" layoutX="198.0" layoutY="273.0" prefHeight="33.0" prefWidth="353.0" />
+      <TextField fx:id="RegisterAddress" layoutX="198.0" layoutY="557.0" prefHeight="33.0" prefWidth="353.0" />
+      <TextField fx:id="RegisterFartherName" layoutX="198.0" layoutY="495.0" prefHeight="33.0" prefWidth="353.0" />
+      <TextField fx:id="RegisterMotherName" layoutX="198.0" layoutY="434.0" prefHeight="33.0" prefWidth="353.0" />
+      <TextField fx:id="RegisterConatctNum" layoutX="198.0" layoutY="612.0" prefHeight="33.0" prefWidth="353.0" />
+      <DatePicker fx:id="dob" layoutX="198.0" layoutY="327.0" prefHeight="33.0" prefWidth="353.0" />
+      <Label layoutX="783.0" layoutY="598.0" text="Level:" />
+      <TextField fx:id="level" layoutX="916.0" layoutY="525.0" prefHeight="33.0" prefWidth="283.0" />
+      <Label layoutX="763.0" layoutY="177.0" text="Previous School:" />
+      <Label layoutX="764.0" layoutY="244.0" text="School Address:" />
+      <TextField fx:id="registerPrevSchool" layoutX="916.0" layoutY="173.0" prefHeight="33.0" prefWidth="306.0" />
+      <TextField fx:id="registerSchoolAddress" layoutX="916.0" layoutY="241.0" prefHeight="33.0" prefWidth="306.0" />
+      <Label layoutX="755.0" layoutY="425.0" text="Last date Attended:" />
+      <DatePicker fx:id="registerLastDate" layoutX="916.0" layoutY="419.0" prefHeight="33.0" prefWidth="306.0" />
+      <Label layoutX="758.0" layoutY="321.0" text="School Document:" />
+      <JFXButton fx:id="schoolDocButton" layoutX="1058.0" layoutY="364.0" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #c5a600;" text="Click here to select document" textFill="WHITE" />
+      <ListView fx:id="registerListView" layoutX="916.0" layoutY="303.0" prefHeight="88.0" prefWidth="133.0" />
+      <Label layoutX="782.0" layoutY="529.0" text="Programme:" />
+      <TextField fx:id="course" layoutX="916.0" layoutY="590.0" prefHeight="35.0" prefWidth="283.0" />
+      <Label layoutX="952.0" layoutY="479.0" text="Current Information">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font></Label>
+      <Line endX="178.0" layoutX="762.0" layoutY="488.0" startX="-82.75" />
+      <Line endX="438.5" endY="-7.0" layoutX="1078.0" layoutY="495.0" startX="-8.0" startY="-7.0" />
+      <Line endX="474.0" layoutX="1064.0" layoutY="154.0" startX="9.0" />
+      <Label layoutX="933.0" layoutY="143.0" prefHeight="17.0" prefWidth="143.0" text="Educational Information">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font></Label>
+      <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="594.0" layoutY="678.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/interface.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="35.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-location-24.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="32.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-phone-contact-24.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="713.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/city.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="715.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/addfolder.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="718.0" layoutY="421.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-calendar-26.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="716.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/electronics.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="35.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-calendar-26.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="88.0" layoutY="386.0" text="Gender:" />
+      <JFXCheckBox fx:id="male" layoutX="198.0" layoutY="386.0" text="Male" />
+      <JFXCheckBox fx:id="female" layoutX="365.0" layoutY="386.0" text="Female" />
+      <ImageView fitHeight="28.0" fitWidth="30.0" layoutX="678.0" layoutY="677.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-close-window-48.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="33.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/social-media.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="32.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-name-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="25.0" layoutX="35.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-name-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="20.0" layoutX="717.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-location-24.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="31.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-female-profile-100.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="30.0" layoutX="30.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-male-user-100.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="35.0" layoutX="710.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-book-100.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="toastsucess" layoutX="493.0" layoutY="616.0" prefHeight="35.0" prefWidth="166.0" text="Registration Successful" textFill="#005406" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="562.0" layoutY="170.0" text="*" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="562.0" layoutY="225.0" text="*" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="461.0" layoutY="388.0" text="*" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="1073.0" layoutY="311.0" text="*" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="1212.0" layoutY="588.0" text="*" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="1209.0" layoutY="523.0" text="*" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="toastfailure" layoutX="525.0" layoutY="133.0" prefHeight="20.0" prefWidth="239.0" text="Fields with asterisks are required!" textFill="#ee0000" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

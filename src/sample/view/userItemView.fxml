@@ -10,7 +10,6 @@
 
 <AnchorPane fx:id="rootanchor" prefHeight="105.0" prefWidth="463.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="dateCell" layoutX="403.0" layoutY="93.0" text="12-02-20" />
       <Label fx:id="userLastName" layoutX="242.0" layoutY="29.0" prefHeight="28.0" prefWidth="110.0" text="LastName">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -31,7 +30,7 @@
       </Label>
       <ImageView fitHeight="38.0" fitWidth="49.0" layoutX="64.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@asserts/social-media.png" />
+            <Image url="@../asserts/social-media.png" />
          </image>
       </ImageView>
       <JFXButton fx:id="declineButton" buttonType="RAISED" layoutX="397.0" layoutY="11.0" ripplerFill="WHITE" style="-fx-background-color: #d3d0d0;" text="Decline" textFill="#030000">

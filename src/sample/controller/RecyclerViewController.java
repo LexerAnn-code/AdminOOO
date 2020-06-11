@@ -1,4 +1,4 @@
-package sample;
+package sample.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListCell;
@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import sample.Admission;
+import sample.Extension;
 
 import javax.swing.text.html.ImageView;
 import java.io.FileNotFoundException;
@@ -48,7 +50,8 @@ public class RecyclerViewController extends JFXListCell<Admission> {
             setGraphic(null);
         } else {
             if (fxmlLoader == null) {
-                fxmlLoader = new FXMLLoader(getClass().getResource("/sample/useritemView.fxml"));
+                fxmlLoader = new FXMLLoader(getClass().getResource("/sample/view/userItemView.fxml"));
+                //Declaring the fxml used for the cell in each ListView
                 fxmlLoader.setController(this);
                 try {
                     fxmlLoader.load();
@@ -56,6 +59,7 @@ public class RecyclerViewController extends JFXListCell<Admission> {
                     e.printStackTrace();
                 }
             }
+            //Setings the data in each cell for the ListView
             userFirstName.setText(admission.getFirstname());
             userLastName.setText(admission.getLastname());
 

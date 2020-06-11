@@ -2,7 +2,21 @@ package sample;
 
 public class RegisterAdmission {
     String lastName,FirstName,MiddleName,UserName,Password,DOB,Address,FatherName,MotherName,Contact;
-    String course,level,previousSchool,schoolAddress,lastDateAttended;
+    String course;
+    String level;
+    String previousSchool;
+    String schoolAddress;
+    String lastDateAttended;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    String gender;
 
     public String getCourse() {
         return course;

@@ -1,4 +1,4 @@
-package sample;
+package sample.controller;
 
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
@@ -10,13 +10,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import sample.Admission;
+import sample.database.DBConnection;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class DeclineController implements Initializable,DBConnection {
+public class DeclineController implements Initializable, DBConnection {
     static private PreparedStatement preparedStatement;
     static private Connection connection;
     Stage stage;
@@ -30,6 +32,9 @@ public class DeclineController implements Initializable,DBConnection {
 
     @FXML
     private Label approveNav;
+
+    @FXML
+    private Label signout;
     @FXML
     private Label declineCount;
 
@@ -67,7 +72,30 @@ public class DeclineController implements Initializable,DBConnection {
         overViewNav.setOnMouseClicked(mouseEvent -> {
             moveToOverView();
         });
+
+        signout.setOnMouseClicked(mouseEvent -> {
+            moveToLogin();
+        });
     }
+
+    public void moveToLogin(){
+        signout.getScene().getWindow().hide();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/sample/view/Login.fxml"));
+
+        try {
+            fxmlLoader.setRoot(fxmlLoader.getRoot());
+            fxmlLoader.load();
+        } catch (IOException e) {
+
+        }
+
+        Parent root = fxmlLoader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
     private ResultSet ReadToDBs() throws SQLException {
         ResultSet resultSet = null;
         String insert = "SELECT * FROM admissionlist WHERE status=?";
@@ -81,7 +109,7 @@ public class DeclineController implements Initializable,DBConnection {
     public void moveToApprove(){
         try {
 
-            root = FXMLLoader.load(getClass().getResource("/sample/ApprovePage.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/sample/view/ApprovePage.fxml"));
             scene = new Scene(root, 850, 500);
             stage = (Stage) approveNav.getScene().getWindow();
             stage.setScene(scene);
@@ -94,7 +122,7 @@ public class DeclineController implements Initializable,DBConnection {
     public void moveToOverView(){
         try {
 
-            root = FXMLLoader.load(getClass().getResource("/sample/AdminPage.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/sample/view/AdminPage.fxml"));
             scene = new Scene(root, 850, 500);
             stage = (Stage) approveNav.getScene().getWindow();
             stage.setScene(scene);

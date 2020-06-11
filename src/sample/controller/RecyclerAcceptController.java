@@ -1,10 +1,13 @@
-package sample;
+package sample.controller;
 
 import com.jfoenix.controls.JFXListCell;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import sample.Admission;
+import sample.CurrentSelected;
+import sample.Extension;
 
 import java.io.IOException;
 
@@ -31,7 +34,8 @@ public class RecyclerAcceptController extends JFXListCell<Admission> {
             setGraphic(null);
         } else {
             if (fxmlLoader == null) {
-                fxmlLoader = new FXMLLoader(getClass().getResource("/sample/acceptItem.fxml"));
+                fxmlLoader = new FXMLLoader(getClass().getResource("/sample/view/acceptItem.fxml"));
+                //Declaring the fxml used for the cell in each ListView
                 fxmlLoader.setController(this);
                 try {
                     fxmlLoader.load();
@@ -44,6 +48,7 @@ public class RecyclerAcceptController extends JFXListCell<Admission> {
             userLastName.setText(admission.getLastname());
             String fn=admission.getFirstname();
             String ln=admission.getLastname();
+            //Setings the data in each cell for the ListView
             int admissionId=admission.getAdmissionID();
             currentSelected=new CurrentSelected();
             currentSelected.setFirst_name(fn);

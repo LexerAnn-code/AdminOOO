@@ -1,4 +1,4 @@
-package sample;
+package sample.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +26,7 @@ public class Controller implements Initializable {
                System.out.println("passed");
                try {
 
-                   root = FXMLLoader.load(getClass().getResource("/sample/AdminPage.fxml"));
+                   root = FXMLLoader.load(getClass().getResource("/sample/view/AdminPage.fxml"));
                    scene = new Scene(root, 850, 500);
                    stage = (Stage) button.getScene().getWindow();
                    stage.setScene(scene);

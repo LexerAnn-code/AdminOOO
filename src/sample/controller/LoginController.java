@@ -1,4 +1,4 @@
-package sample;
+package sample.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -7,8 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.*;
+import sample.database.DBConnection;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,27 +30,38 @@ public class LoginController implements Initializable, DBConnection {
     String fname, lastname;
 
     @FXML
-    private TextField IDtext;
-
-    @FXML
-    private TextField PasswordText;
-
-    @FXML
-    private JFXButton loginButton;
-    @FXML
     private JFXCheckBox studentCheck;
 
     @FXML
     private JFXCheckBox adminCheck;
+
     @FXML
-    private JFXButton loginRegisterButton;
+    private TextField IDtext;
+
+    @FXML
+    private PasswordField PasswordText;
+
+    @FXML
+    private JFXButton loginButton;
+
+    @FXML
+    private Hyperlink loginRegisterButton;
+    @FXML
+    private Label toastError;
+    @FXML
+    private Label toastEmpty;
+    @FXML
+    private Label toastboxes;
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loginRegisterButton.setOnAction(actionEvent -> {
+
+            loginRegisterButton.getScene().getWindow().hide();
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/sample/applyAdmission.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/sample/view/register.fxml"));
 
             try {
                 fxmlLoader.setRoot(fxmlLoader.getRoot());
@@ -56,18 +72,49 @@ public class LoginController implements Initializable, DBConnection {
 
             Parent root = fxmlLoader.getRoot();
             Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(root,700,600));
             stage.show();
         });
 
-        loginButton.setOnAction(event -> {
-            if (studentCheck.isSelected()) {
 
-                loginStudentIn();
-            } else {
-                loginAdmin();
+        loginButton.setOnAction(event -> {
+
+            if (studentCheck.isSelected()) {
+                if (IDtext.getText().equals("") || PasswordText.getText().equals("") ){
+                    Shaker shakerUsername=new Shaker(IDtext);
+                    Shaker shakerPassword=new Shaker(PasswordText);
+                    toastEmpty.setVisible(true);
+                    Shaker shakerToast=new Shaker(toastEmpty);
+                        //Displays a shake effect on view and shows a Toast Message
+
+
+                }
+                else{
+
+                    loginStudentIn();
+                }
+
+
+            }
+
+            else {
+                if (IDtext.getText().equals("") || PasswordText.getText().equals("") ){
+                    Shaker shakerUsername=new Shaker(IDtext);
+                    Shaker shakerPassword=new Shaker(PasswordText);
+                    toastEmpty.setVisible(true);
+                    Shaker shakerToast=new Shaker(toastEmpty);
+
+
+
+                }
+                else {
+                    loginAdmin();
+                }
             }
         });
+
+
+
     }
 
     @Override
@@ -78,6 +125,7 @@ public class LoginController implements Initializable, DBConnection {
     private void ControllerConnect() throws SQLException {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "");
         System.out.println("Connection " + connection.getCatalog());
+    //Makes a call to the database
     }
 
     public void loginAdmin() {
@@ -102,7 +150,7 @@ public class LoginController implements Initializable, DBConnection {
 
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/sample/AdminPage.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/sample/view/AdminPage.fxml"));
 
                 try {
                     fxmlLoader.setRoot(fxmlLoader.getRoot());
@@ -115,11 +163,12 @@ public class LoginController implements Initializable, DBConnection {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.show();
-
-
             } else {
                 System.out.println("Wrong Data");
-
+                Shaker shakerUserName=new Shaker(IDtext);
+                Shaker shakerPassword=new Shaker(PasswordText);
+                toastError.setVisible(true);
+                Shaker shakerToastM=new Shaker(toastError);
             }
 
         } catch (SQLException e) {
@@ -140,7 +189,6 @@ public class LoginController implements Initializable, DBConnection {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
         }
         System.out.println("Reading from ALL Admin  " + resultset);
         return resultset;
@@ -189,6 +237,10 @@ public class LoginController implements Initializable, DBConnection {
 
             } else {
                 System.out.println("Wrong Data");
+                Shaker shakerUsername=new Shaker(IDtext);
+                Shaker shakerPassword=new Shaker(PasswordText);
+                toastError.setVisible(true);
+                Shaker shakerToast=new Shaker(toastError);
 
             }
 
@@ -238,7 +290,7 @@ public class LoginController implements Initializable, DBConnection {
         if (counter == 1) {
             System.out.println("Data exists");
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/sample/afterlogin.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/sample/view/afterlogin.fxml"));
 
             try {
                 fxmlLoader.setRoot(fxmlLoader.getRoot());
@@ -255,7 +307,7 @@ public class LoginController implements Initializable, DBConnection {
             System.out.println("No data");
 
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/sample/Newregister.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/sample/view/Newregister.fxml"));
 
             try {
                 fxmlLoader.setRoot(fxmlLoader.getRoot());
@@ -266,7 +318,7 @@ public class LoginController implements Initializable, DBConnection {
 
             Parent root = fxmlLoader.getRoot();
             Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(root,850,500));
             stage.show();
             RegisterController controller = fxmlLoader.getController();
             System.out.println("USERID->>" + userID);

@@ -1,18 +1,25 @@
-package sample;
+package sample.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import sample.Shaker;
+import sample.database.DBConnection;
+import sample.RegisterAdmission;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,9 +30,6 @@ import java.util.ResourceBundle;
 public class RegisterController implements Initializable, DBConnection {
     @FXML
     private JFXButton RegisterSaveButton;
-
-    @FXML
-    private JFXButton RegisterNextButton;
 
     @FXML
     private JFXButton RegisterCloseButton;
@@ -71,16 +75,34 @@ public class RegisterController implements Initializable, DBConnection {
 
     @FXML
     private ListView  registerListView;
+    @FXML
+    private DatePicker registerLastDate;
+
+    @FXML
+    private JFXCheckBox male;
+
+    @FXML
+    private JFXCheckBox female;
+
+    @FXML
+    private Label toastsucess;
+    @FXML
+    private Label toastfailure;
+
+
 
 
 
     static private PreparedStatement preparedStatement;
     static private Connection connection;
     byte[] pdfData;
+    String gender;
 
     private int userIDPass;
     public static String filename;
     public static int id;
+    private Parent root;
+
 
     public void setUserIDPass(int userIDPass) {
         this.userIDPass = userIDPass;
@@ -96,6 +118,15 @@ public class RegisterController implements Initializable, DBConnection {
 
 
         RegisterSaveButton.setOnAction(actionEvent -> {
+            if(male.isSelected()){
+                female.setSelected(false);
+                gender="Male";
+            }
+            else {
+                male.setSelected(false);
+                gender="Female";
+            }
+
             String contactNumber = RegisterConatctNum.getText();
             String motherName = RegisterMotherName.getText();
             String fatherName = RegisterFartherName.getText();
@@ -117,15 +148,67 @@ public class RegisterController implements Initializable, DBConnection {
             registerAdmission.setContact(contactNumber);
             registerAdmission.setCourse(courses);
             registerAdmission.setLevel(levelText);
+            registerAdmission.setGender(gender);
             registerAdmission.setPreviousSchool(previousSchool);
             registerAdmission.setSchoolAddress(schoolAddress);
 
+
+
+
             id = getUserIDPass();
+            
+
+
             try {
-                writeToAdmissionDB(registerAdmission);
+                if (RegisterLastName.getText().equals("") || RegisterFirstName.getText().equals("") || level.getText().equals("")|| course.getText().equals("")||  registerListView.getItems().equals("")){
+
+
+                    Shaker fname=new Shaker(RegisterFirstName);
+                    Shaker lname=new Shaker(RegisterLastName);
+                    Shaker programme=new Shaker(course);
+                    Shaker leveel=new Shaker(level);
+                    Shaker schdoc=new Shaker(registerListView);
+                   // Shaker genderr=new Shaker(gender);
+
+                    toastfailure.setVisible(true);
+                    Shaker shakerToast=new Shaker(toastfailure);
+
+
+
+                }
+                else{
+                    toastsucess.setVisible(true);
+                    Shaker shakerToast=new Shaker(toastsucess);
+
+                    writeToAdmissionDB(registerAdmission);
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+         
+
+
+
+        });
+
+
+        RegisterCloseButton.setOnAction(actionEvent -> {
+            RegisterCloseButton.getScene().getWindow().hide();
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/sample/view/Login.fxml"));
+
+            try {
+                fxmlLoader.setRoot(fxmlLoader.getRoot());
+                fxmlLoader.load();
+            } catch (IOException e) {
+
+            }
+
+            Parent root = fxmlLoader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         });
         schoolDocButton.setOnAction(event -> {
             FileChooser fc= new FileChooser();
@@ -140,8 +223,16 @@ public class RegisterController implements Initializable, DBConnection {
             }
             else{
                 System.out.println("File is not valid");
+
+
             }
 
+        });
+        dob.setOnAction(actionEvent -> {
+            dob.getEditor().getText();
+        });
+        registerLastDate.setOnAction(actionEvent -> {
+            registerLastDate.getEditor().getText();
         });
 
     }
@@ -154,7 +245,7 @@ public class RegisterController implements Initializable, DBConnection {
     }
 
     private void writeToAdmissionDB(RegisterAdmission registerAdmission) throws SQLException {
-        String insert = "INSERT INTO admissionlist(studentid,first_name,last_name,middle_name,father_name,mother_name,contact_number,address,course,level,previous_school,school_address,document)" + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String insert = "INSERT INTO admissionlist(studentid,first_name,last_name,middle_name,father_name,mother_name,contact_number,address,course,level,previous_school,school_address,document,dob,lastdate,gender)" + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 
         try {
@@ -174,6 +265,9 @@ public class RegisterController implements Initializable, DBConnection {
             preparedStatement.setString(11, registerAdmission.getPreviousSchool());
             preparedStatement.setString(12, registerAdmission.getSchoolAddress());
             preparedStatement.setBinaryStream(13,fis);
+            preparedStatement.setString(14,(dob.getEditor()).getText());
+            preparedStatement.setString(15,(registerLastDate.getEditor()).getText());
+            preparedStatement.setString(16,registerAdmission.getGender());
 
             preparedStatement.executeUpdate();
             preparedStatement.close();

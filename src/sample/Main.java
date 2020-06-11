@@ -5,13 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.controller.*;
+import sample.database.DBConnection;
+import sample.database.MySQLConnection;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        primaryStage.setTitle("Hello World");
+        Parent root = FXMLLoader.load(getClass().getResource("view/Splash.fxml"));
+        primaryStage.setTitle("UMS ");
         primaryStage.setScene(new Scene(root, 1200, 700));
         primaryStage.show();
 
@@ -22,6 +25,7 @@ public class Main extends Application {
         DBConnection dbConnectionAfterLogin=new AfterLoginController();
         DBConnection dbConnectionAccept=new ApproveController();
         DBConnection dbConnectionAcceptDetails=new AcceptDetailsController();
+        DBConnection dbConnection1=new RegisterOneController();
 
         DBConnection dbConnectionRegisterProfile=new RegisterController();
 
@@ -35,6 +39,7 @@ public class Main extends Application {
         mySQLConnection.connectSQL(dbConnectionRegisterProfile);
         mySQLConnection.connectSQL(dbConnectionLogin);
         mySQLConnection.connectSQL(dbConnectionAccept);
+        mySQLConnection.connectSQL(dbConnection1);
     }
 
 

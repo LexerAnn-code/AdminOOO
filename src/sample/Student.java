@@ -15,7 +15,15 @@ public class Student {
 private String password;
  String date;
 String lastName;
+String student_gender;
 
+    public String getStudent_gender() {
+        return student_gender;
+    }
+
+    public void setStudent_gender(String student_gender) {
+        this.student_gender = student_gender;
+    }
 
     public String getLastName() {
         return lastName;
