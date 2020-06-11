@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.RegisterOneController">
+   <children>
+      <TextField fx:id="username" layoutX="427.0" layoutY="314.0" prefHeight="49.0" prefWidth="346.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="pass" layoutX="427.0" layoutY="438.0" prefHeight="49.0" prefWidth="346.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </PasswordField>
+      <JFXButton fx:id="submitButton" layoutX="539.0" layoutY="521.0" prefHeight="39.0" prefWidth="92.0" style="-fx-background-color: #c5a600;" text="SUBMIT" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="22.0" fitWidth="26.0" layoutX="301.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/icons8-student-registration-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="301.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/closed.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutY="-2.0" prefHeight="107.0" prefWidth="1500.0" style="-fx-background-color: #0033E6;">
+         <children>
+            <ImageView fx:id="back" fitHeight="40.0" fitWidth="60.0" layoutX="14.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/signs.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="482.0" layoutY="65.0" text="UNIVERSITY  MANAGEMENT SYSTEM" textFill="WHITE">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="54.0" fitWidth="49.0" layoutX="665.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asserts/adminlogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="332.0" layoutY="326.0" prefHeight="26.0" prefWidth="86.0" text="USERNAME:" />
+      <Label layoutX="332.0" layoutY="455.0" prefHeight="17.0" prefWidth="86.0" text="PASSWORD:" />
+      <Label fx:id="toastError" layoutX="468.0" layoutY="156.0" prefHeight="40.0" prefWidth="200.0" text="Data already exists. Try again" textFill="RED" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="toastsucess" layoutX="479.0" layoutY="156.0" prefHeight="40.0" prefWidth="212.0" text="Sign up Successful" textFill="#0a8d34" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="100.0" fitWidth="155.0" layoutX="508.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asserts/images.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="toastfields" layoutX="508.0" layoutY="176.0" text="Textfields can't be empty" textFill="RED" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
